@@ -17,3 +17,7 @@ output "s3_bucket_name" {
 output "cloudfront_domain" {
   value = module.s3_cloudfront.cloudfront_domain_name
 }
+
+output "ecr_backend_url" {
+  value = module.ecr_backend.repository_url
+}

@@ -39,3 +39,12 @@ module "ec2" {
     Environment = "dev"
   }
 }
+
+module "ecr_backend" {
+  source          = "./modules/ecr"
+  repository_name = "backend"
+  tags = {
+    Project = "DevSecOpsApp"
+    Environment = var.environment
+  }
+}

@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       tf_action:
-        description: 'Terraform Action (plan/apply)'
+        description: 'Terraform Action (plan/apply/delete)'
         required: true
         default: 'plan'
 
@@ -50,3 +50,7 @@ jobs:
       - name: Terraform Apply
         if: ${{ github.event.inputs.tf_action == 'apply' }}
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
+
+      - name: Terraform Delete
+        if: ${{ github.event.inputs.tf_action == 'delete' }}
+        run: terraform delete -auto-approve -var-file="terraform.tfvars"
